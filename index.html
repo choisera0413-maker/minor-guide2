@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우리아이 계좌 이용가이드 | 나무증권</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #C5E84A;
+      --green-dark: #A8CC2A;
+      --dark: #1A2B1A;
+      --dark2: #243624;
+      --green-light: #F0F9D4;
+      --green-pale: #F7FCE8;
+      --bg: #F2F5EC;
+      --white: #ffffff;
+      --text-primary: #1A2B1A;
+      --text-secondary: #4A5A3A;
+      --text-muted: #8A9A7A;
+      --border: #DDE8C4;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --shadow-sm: 0 1px 4px rgba(26,43,26,0.07);
+      --shadow-md: 0 4px 20px rgba(100,160,30,0.13);
+      --shadow-lg: 0 8px 40px rgba(100,160,30,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,43,26,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(197,232,74,0.15);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-dot-group {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    .nav-dot:nth-child(2) { animation-delay: 0.3s; opacity: 0.7; }
+    .nav-dot:nth-child(3) { animation-delay: 0.6s; opacity: 0.45; }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    .hero {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      padding: 52px 28px 56px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(197,232,74,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(197,232,74,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .hero-orb1 {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,232,74,0.18) 0%, transparent 70%);
+      top: -80px;
+      right: -60px;
+      pointer-events: none;
+    }
+
+    .hero-orb2 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,232,74,0.10) 0%, transparent 70%);
+      bottom: -40px;
+      left: -30px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span { color: var(--green); }
+
+    .progress-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 28px;
+      position: sticky;
+      top: 58px;
+      z-index: 90;
+      box-shadow: 0 2px 12px rgba(26,43,26,0.06);
+    }
+
+    .progress-track {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .p-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      flex: 1;
+      gap: 5px;
+      position: relative;
+    }
+
+    .p-step::after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: calc(50% + 14px);
+      right: calc(-50% + 14px);
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .p-step:last-child::after { display: none; }
+
+    .p-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      transition: all 0.25s ease;
+      border: 2px solid transparent;
+    }
+
+    .p-step.done .p-num {
+      background: var(--green);
+      color: var(--dark);
+      border-color: var(--green-dark);
+    }
+
+    .p-step.active .p-num {
+      background: var(--dark);
+      color: var(--green);
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(197,232,74,0.2);
+    }
+
+    .p-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      white-space: nowrap;
+      transition: color 0.2s;
+      max-width: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .p-step.active .p-label { color: var(--dark); }
+
+    .main-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg);
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .step-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .step-card.active {
+      box-shadow: var(--shadow-lg);
+      border-color: #B8D870;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 22px;
+      cursor: pointer;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .step-header:hover { background: var(--green-pale); }
+    .step-card.active .step-header { background: var(--green-pale); }
+
+    .step-num-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.25s;
+    }
+
+    .s1 .step-num-badge { background: #D4EAE4; color: #1A5A40; }
+    .s2 .step-num-badge { background: #FDE8D4; color: #8A3000; }
+    .s3 .step-num-badge { background: #F4D4E8; color: #6A0040; }
+
+    .step-card.active .step-num-badge {
+      background: var(--dark) !important;
+      color: var(--green) !important;
+    }
+
+    .step-label { flex: 1; }
+
+    .step-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .chevron-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.25s;
+    }
+
+    .step-card.active .chevron-wrap {
+      background: var(--dark);
+      transform: rotate(180deg);
+    }
+
+    .chevron-wrap svg { color: var(--text-muted); }
+    .step-card.active .chevron-wrap svg { color: var(--green); }
+
+    .step-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-body.open { max-height: 3000px; }
+
+    .step-body-inner {
+      padding: 4px 22px 22px;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .tip-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--green-pale) 0%, #EEF8D0 100%);
+      border: 1px solid rgba(197,232,74,0.5);
+      border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
+      padding: 12px 14px;
+      margin: 16px 0 14px;
+    }
+
+    .tip-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 1px;
+      color: #6A9A10;
+    }
+
+    .tip-text {
+      font-size: 13.5px;
+      color: #3A5A10;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .tip-text strong { font-weight: 700; color: #2A4A08; }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin: 18px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid var(--green-dark);
+      letter-spacing: -0.2px;
+    }
+
+    .item-list { list-style: none; }
+
+    .item-list > li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-primary);
+      line-height: 1.55;
+    }
+
+    .item-list > li:last-child { border-bottom: none; }
+
+    .item-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .item-content { flex: 1; }
+
+    .withdrawal-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+
+    .wd-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .wd-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: linear-gradient(to right, var(--green-pale), var(--white));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wd-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .wd-header-text { flex: 1; }
+
+    .wd-method-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .wd-method-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .wd-card-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wd-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .wd-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--dark);
+      color: var(--green);
+      border-radius: var(--r-sm);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+      align-self: flex-start;
+      letter-spacing: -0.2px;
+    }
+
+    .wd-link-btn:hover {
+      background: #2A4A1A;
+      transform: translateX(2px);
+    }
+
+    .wd-detail-box {
+      background: var(--bg);
+      border-radius: var(--r-sm);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wd-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .wd-detail-row .label {
+      font-weight: 700;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+
+    .wd-detail-row.indent { padding-left: 16px; }
+
+    .wd-fee-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #5A7A20;
+      background: rgba(197,232,74,0.25);
+      border: 1px solid rgba(197,232,74,0.5);
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-left: 4px;
+    }
+
+    .wd-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #FFF8E1;
+      border: 1px solid #FFE082;
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #795548;
+      line-height: 1.6;
+    }
+
+    .wd-notice svg { flex-shrink: 0; margin-top: 1px; color: #F9A825; }
+
+    .wd-star-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: var(--green-pale);
+      border: 1px solid rgba(197,232,74,0.6);
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #3A5A10;
+      line-height: 1.6;
+    }
+
+    .wd-star-notice svg { flex-shrink: 0; margin-top: 1px; color: #6A9A10; }
+
+    .wd-info-cell {
+      background: var(--bg);
+      border-radius: var(--r-sm);
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+    }
+
+    .wd-info-cell-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .wd-info-cell-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      background: var(--dark);
+      color: var(--green);
+      border-radius: var(--r-md);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: -0.3px;
+    }
+
+    .cta-btn:hover {
+      background: var(--dark2);
+      box-shadow: 0 4px 16px rgba(26,43,26,0.2);
+      transform: translateY(-1px);
+    }
+
+    .text-link {
+      color: var(--text-primary);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      vertical-align: middle;
+      transition: color 0.15s;
+    }
+
+    .text-link:hover { color: #2E6010; }
+
+    .yt-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 90px;
+      border-radius: var(--r-sm);
+      position: relative;
+      text-decoration: none;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .yt-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28);
+    }
+
+    .yt-play {
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
+    }
+
+    .footer {
+      background: var(--dark);
+      padding: 36px 28px;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .footer-copy {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 540px) {
+      .hero-title { font-size: 20px; }
+      .p-label { display: none; }
+    }
+
+    .wd-star-notice-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .wd-star-notice-btn:hover {
+      background-color: #f9f9f9;
+    }
+
+    .wd-star-notice {
+      margin-top: 10px;
+      padding: 12px;
+      background-color: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-dot-group">
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb1"></div>
+    <div class="hero-orb2"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <img class="hero-app-icon"
+              src="https://raw.githubusercontent.com/choisera0413-maker/minor-guide1/main/mark3.jpg"
+              alt="나무증권"
+              style="width:80px;height:80px;border-radius:20px;object-fit:cover;flex-shrink:0;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:2px solid rgba(197,232,74,0.3);"
+            />
+            <span>우리아이 계좌 이용가이드</span>
+          </div>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESS TRACKER (3단계) -->
+  <div class="progress-wrap">
+    <div class="progress-track">
+      <div class="p-step" onclick="scrollToStep('step1')">
+        <div class="p-num">1</div>
+        <div class="p-label">로그인</div>
+      </div>
+      <div class="p-step" onclick="scrollToStep('step2')">
+        <div class="p-num">2</div>
+        <div class="p-label">거래시작</div>
+      </div>
+      <div class="p-step" onclick="scrollToStep('step3')">
+        <div class="p-num">3</div>
+        <div class="p-label">출금방법</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="main-wrap">
+
+    <!-- STEP 1 -->
+    <div class="step-card s1" id="step1">
+      <div class="step-header" onclick="toggle('step1')">
+        <div class="step-num-badge">1</div>
+        <div class="step-label">
+          <div class="step-tag">STEP 01</div>
+          <div class="step-title">로그인 하기</div>
+        </div>
+        <div class="chevron-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="step-body" id="body-step1">
+        <div class="step-body-inner">
+          <div class="section-title">ID 등록 및 공동인증서 발급</div>
+          <div class="tip-box">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
+            </svg>
+            <div class="tip-text"><strong>TIP.</strong> 계좌 개설 승인 시 발송되는 알림톡 내용 중 계좌번호를 기억하세요!</div>
+          </div>
+          <ul class="item-list">
+            <li>
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <a href="https://link.mynamuh.com/f0y67a" target="_blank" class="cta-btn">
+                ID 등록 바로가기
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </li>
+            <li>
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              <div class="item-content" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+                <div>
+                  공동인증서 발급 방법은
+                  <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="text-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000" style="display:inline-block;vertical-align:middle;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    '공동인증서 발급 방법 영상'
+                  </a>을 참고하세요.
+                  <br>
+                  <a href="https://link.mynamuh.com/cva1nm" target="_blank" class="cta-btn" style="display:inline-flex;margin-top:8px;">
+                    공동인증서 발급 바로가기
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  </a>
+                </div>
+                <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="yt-thumb" style="background-image:url('https://img.youtube.com/vi/zxqyw/mqdefault.jpg');background-size:cover;background-position:center;">
+                  <div class="yt-overlay"></div>
+                  <svg class="yt-play" width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-card s2" id="step2">
+      <div class="step-header" onclick="toggle('step2')">
+        <div class="step-num-badge">2</div>
+        <div class="step-label">
+          <div class="step-tag">STEP 02</div>
+          <div class="step-title">거래 시작하기</div>
+        </div>
+        <div class="chevron-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="step-body" id="body-step2">
+        <div class="step-body-inner">
+          <div class="tip-box">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
+            </svg>
+            <div class="tip-text"><strong>TIP.</strong> 국내주식 주문 외 업무 처리 시 자녀 명의로 별도 로그인이 필요해요!</div>
+          </div>
+          <ul class="item-list">
+            <li>
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <a href="https://link.mynamuh.com/dlfwfw" target="_blank" class="text-link">
+                공모청약 이용가이드
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </li>
+            <li>
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <a href="https://link.mynamuh.com/ncwhsr" target="_blank" class="text-link">
+                해외주식 거래신청 바로가기
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </li>
+            <li>
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              <a href="https://link.mynamuh.com/0xdbsc" target="_blank" class="text-link">
+                파생ETP 거래신청 바로가기
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card s3" id="step3">
+      <div class="step-header" onclick="toggle('step3')">
+        <div class="step-num-badge">3</div>
+        <div class="step-label">
+          <div class="step-tag">STEP 03</div>
+          <div class="step-title">출금 방법 알아보기</div>
+        </div>
+        <div class="chevron-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="step-body" id="body-step3">
+        <div class="step-body-inner">
+          <div class="tip-box">
+            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
+            </svg>
+            <div class="tip-text"><strong>TIP.</strong> 자녀 명의로 별도 로그인이 필요해요!</div>
+          </div>
+
+          <ul class="withdrawal-list">
+
+            <li class="wd-card">
+              <div class="wd-card-header">
+                <div class="wd-icon-wrap">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+                </div>
+                <div class="wd-header-text">
+                  <div class="wd-method-label">방법 01</div>
+                  <div class="wd-method-title">자녀명의 은행이체 약정 등록</div>
+                </div>
+              </div>
+              <div class="wd-card-body">
+                <p class="wd-desc">NH투자증권에 자녀명의 은행계좌를 약정 등록 후 해당 은행계좌로 출금할 수 있어요.</p>
+                <a href="https://link.mynamuh.com/hvs7l0" target="_blank" class="wd-link-btn">
+                  은행이체약정 서비스 신청 바로가기
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </li>
+
+            <li class="wd-card">
+              <div class="wd-card-header">
+                <div class="wd-icon-wrap">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                </div>
+                <div class="wd-header-text">
+                  <div class="wd-method-label">방법 02</div>
+                  <div class="wd-method-title">자녀명의 타기관 실물 OTP 보유</div>
+                </div>
+              </div>
+              <div class="wd-card-body">
+                <p class="wd-desc">다른 금융사(은행 또는 증권)에서 발급한 자녀 명의 실물 OTP를 보유한 경우, 타기관 OTP 등록 후 출금할 수 있어요.</p>
+                <a href="https://link.mynamuh.com/dgoi0l" target="_blank" class="wd-link-btn">
+                  타기관 OTP 등록 바로가기
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </li>
+
+            <li class="wd-card">
+              <div class="wd-card-header">
+                <div class="wd-icon-wrap">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="wd-header-text">
+                  <div class="wd-method-label">방법 03</div>
+                  <div class="wd-method-title">보안카드 또는 실물OTP 발급 (영업점 방문)</div>
+                </div>
+              </div>
+              <div class="wd-card-body">
+                <div class="wd-notice">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  <span>NH투자증권 영업점 방문 시 자녀명의 보안카드 또는 실물OTP를 발급받을 수 있어요. <strong>(중복사용 불가)</strong></span>
+                </div>
+                <div class="wd-detail-box">
+                  <div class="wd-detail-row">
+                    <span class="label">① 보안카드</span>
+                    <span>NH투자증권에서만 사용 가능한 숫자카드</span>
+                  </div>
+                  <div class="wd-detail-row" style="margin-top:6px;">
+                    <span class="label">② 실물OTP</span>
+                    <span>다른 금융사에 등록해도 사용 가능한 일회용 비밀번호 생성기</span>
+                  </div>
+                  <div class="wd-detail-row indent">
+                    <span> [ 발급 수수료 ]<span class="wd-fee-tag">등급별 할인 적용</span><br>
+                    <span>• 보안카드 : 최초 발급 무료/ 재발급 최대 1천원</span><br>
+                    <span>• OTP 발급 : 최초 발급 및 재발급 최대 8천원</span>
+                  </span></div>
+                  <button type="button" class="wd-star-notice-btn" id="certDocBtn" onclick="const content = document.getElementById('certDocContent'); content.style.display = content.style.display === 'none' ? 'block' : 'none';">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFA000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    영업점 방문 희망시 <strong>Click!</strong>
+                  </button>
+                  <div class="wd-star-notice" id="certDocContent" style="display: none; padding: 12px; background-color: #fafafa; border: 1px solid #eee; border-radius: 6px; font-size: 14px; margin-top: 10px;">
+                    <span>
+                      영업점 방문시 구비 서류는 <strong>고객확인제도 재등록</strong>의 구비 서류와 동일해요.<br>
+                      <a href="https://m.nhsec.com/static/notice/cpl/ntc01.html" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;">
+                        방문시 구비서류 확인하기
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      </a>
+                      <a href="https://m.nhqv.com/etc/branchList" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;">
+                        영업점 위치 확인
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="wd-card">
+              <div class="wd-card-header">
+                <div class="wd-icon-wrap">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.39 19a19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.9-8.39A2 2 0 0 1 3.47 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"></path></svg>
+                </div>
+                <div class="wd-header-text">
+                  <div class="wd-method-label">방법 04</div>
+                  <div class="wd-method-title">자녀 계좌에 대체약정 서비스 신청 후 부모님 NH투자증권 계좌로 전화 이체</div>
+                </div>
+              </div>
+              <div class="wd-card-body">
+                <div class="wd-notice">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  <span>부모님과 자녀 계좌를 동시에 개설한 경우, <strong>자동으로 자녀 계좌에 부모님 계좌가 대체약정</strong>되어 있어요.</span>
+                </div>
+                <div class="wd-notice" style="flex-direction: column; gap: 10px;">
+                  <div style="display: flex; align-items: flex-start; gap: 8px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <span>자녀 계좌에 부모님 계좌가 대체약정 등록되어 있지 않은 경우, <strong>대체약정 서비스 신청</strong>이 필요해요.</span>
+                  </div>
+                  <a href="https://link.mynamuh.com/rft7tu" target="_blank" class="wd-link-btn">
+                    대체약정 서비스 신청 바로가기
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+                  <div class="wd-info-cell" style="width: 100%; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
+                    <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">유선 출금 요청</div>
+                    <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
+                      <a href="tel:1544-0000" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">📞 1544-0000</a>
+                    </div>
+                    <div style="font-size: 11px; color: #888; margin-top: 3px;">고객지원센터</div>
+                  </div>
+                  <div class="wd-info-cell" style="width: 100%; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
+                    <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">출금 가능 시간</div>
+                    <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                      <span style="display: inline-block; vertical-align: middle;">08:00 ~ 16:00</span>
+                    </div>
+                    <div style="font-size: 11px; color: #888; margin-top: 3px;">영업일</div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        나무증권 | NH투자증권 1544-0000<br>
+        투자전 설명청취 및 상품설명서 약관 필독, 원금손실가능 및 투자자귀속, 이 금융상품(주식)은 예금자보호법에 따라 보호되지 않습니다.<br>
+        이 예탁금 중 증권매수 미사용 현금 잔액은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 "1억원까지"(본 금융회사의 여타 보호상품과 합산) 보호됩니다.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggle(id) {
+      var card = document.getElementById(id);
+      var body = document.getElementById('body-' + id);
+      var isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      card.classList.toggle('active', !isOpen);
+      updateProgress(id, !isOpen);
+    }
+
+    function scrollToStep(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var offset = 130;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      setTimeout(function() {
+        var body = document.getElementById('body-' + id);
+        if (!body.classList.contains('open')) toggle(id);
+      }, 400);
+    }
+
+    function updateProgress(activeId, isOpen) {
+      var steps = ['step1','step2','step3'];
+      var activeIdx = steps.indexOf(activeId);
+      var pSteps = document.querySelectorAll('.p-step');
+      pSteps.forEach(function(ps, i) {
+        ps.classList.remove('active','done');
+        if (i < activeIdx) ps.classList.add('done');
+        if (i === activeIdx && isOpen) ps.classList.add('active');
+      });
+    }
+  </script>
+
+</body>
+</html>
