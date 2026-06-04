@@ -1,1060 +1,928 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>우리아이 계좌 이용가이드 | 나무증권</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!DOCTYPE html> 
+<html lang="ko"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>우리아이 계좌 이용가이드 | 나무증권</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com/"> 
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet"> 
+  <style> 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } 
 
-    :root {
-      --green: #C5E84A;
-      --green-dark: #A8CC2A;
-      --dark: #1A2B1A;
-      --dark2: #243624;
-      --green-light: #F0F9D4;
-      --green-pale: #F7FCE8;
-      --bg: #F2F5EC;
-      --white: #ffffff;
-      --text-primary: #1A2B1A;
-      --text-secondary: #4A5A3A;
-      --text-muted: #8A9A7A;
-      --border: #DDE8C4;
-      --r-sm: 8px;
-      --r-md: 14px;
-      --r-lg: 20px;
-      --r-xl: 28px;
-      --shadow-sm: 0 1px 4px rgba(26,43,26,0.07);
-      --shadow-md: 0 4px 20px rgba(100,160,30,0.13);
-      --shadow-lg: 0 8px 40px rgba(100,160,30,0.16);
-    }
+    :root { 
+      --green: #C5E84A; 
+      --green-dark: #A8CC2A; 
+      --dark: #1A2B1A; 
+      --dark2: #243624; 
+      --green-light: #F0F9D4; 
+      --green-pale: #F7FCE8; 
+      --bg: #F2F5EC; 
+      --white: #ffffff; 
+      --text-primary: #1A2B1A; 
+      --text-secondary: #4A5A3A; 
+      --text-muted: #8A9A7A; 
+      --border: #DDE8C4; 
+      --r-sm: 8px; 
+      --r-md: 14px; 
+      --r-lg: 20px; 
+      --r-xl: 28px; 
+      --shadow-sm: 0 1px 4px rgba(26,43,26,0.07); 
+      --shadow-md: 0 4px 20px rgba(100,160,30,0.13); 
+      --shadow-lg: 0 8px 40px rgba(100,160,30,0.16); 
+    } 
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; } 
 
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: var(--bg);
-      color: var(--text-primary);
-      min-height: 100vh;
-    }
+    body { 
+      font-family: 'Noto Sans KR', sans-serif; 
+      background: var(--bg); 
+      color: var(--text-primary); 
+      min-height: 100vh; 
+    } 
 
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(26,43,26,0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 0 28px;
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(197,232,74,0.15);
-    }
+    .navbar { 
+      position: sticky; top: 0; z-index: 100; 
+      background: rgba(26,43,26,0.96); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px); 
+      padding: 0 28px; height: 58px; 
+      display: flex; align-items: center; justify-content: space-between; 
+      border-bottom: 1px solid rgba(197,232,74,0.15); 
+    } 
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; } 
+    .nav-dot-group { display: flex; gap: 5px; align-items: center; } 
 
-    .nav-dot-group {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
+    .nav-dot { 
+      width: 8px; height: 8px; border-radius: 50%; 
+      background: var(--green); 
+      animation: pulse-dot 2.4s ease-in-out infinite; 
+    } 
+    .nav-dot:nth-child(2) { animation-delay: 0.3s; opacity: 0.7; } 
+    .nav-dot:nth-child(3) { animation-delay: 0.6s; opacity: 0.45; } 
 
-    .nav-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse-dot 2.4s ease-in-out infinite;
-    }
+    @keyframes pulse-dot { 
+      0%, 100% { transform: scale(1); } 
+      50% { transform: scale(1.3); } 
+    } 
 
-    .nav-dot:nth-child(2) { animation-delay: 0.3s; opacity: 0.7; }
-    .nav-dot:nth-child(3) { animation-delay: 0.6s; opacity: 0.45; }
+    .hero { 
+      background: var(--dark); 
+      position: relative; overflow: hidden; 
+      padding: 52px 28px 56px; 
+    } 
 
-    @keyframes pulse-dot {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-    }
+    .hero-grid { display: none; } 
 
-    .hero {
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
-      padding: 52px 28px 56px;
-    }
+    .hero-orb1 { 
+      position: absolute; width: 320px; height: 320px; border-radius: 50%; 
+      background: radial-gradient(circle, rgba(197,232,74,0.18) 0%, transparent 70%); 
+      top: -80px; right: -60px; pointer-events: none; 
+    } 
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(197,232,74,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(197,232,74,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
+    .hero-orb2 { 
+      position: absolute; width: 200px; height: 200px; border-radius: 50%; 
+      background: radial-gradient(circle, rgba(197,232,74,0.10) 0%, transparent 70%); 
+      bottom: -40px; left: -30px; pointer-events: none; 
+    } 
 
-    .hero-orb1 {
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(197,232,74,0.18) 0%, transparent 70%);
-      top: -80px;
-      right: -60px;
-      pointer-events: none;
-    }
+    .hero-inner { 
+      position: relative; z-index: 2; 
+      max-width: 760px; margin: 0 auto; 
+      display: flex; align-items: center; gap: 24px; 
+      justify-content: center; 
+    } 
 
-    .hero-orb2 {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(197,232,74,0.10) 0%, transparent 70%);
-      bottom: -40px;
-      left: -30px;
-      pointer-events: none;
-    }
+    .hero-text { flex: 1; } 
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
+    .hero-title { 
+      font-size: 26px; font-weight: 800; color: var(--white); 
+      line-height: 1.3; letter-spacing: -0.5px; margin-bottom: 8px; 
+    } 
 
-    .hero-text { flex: 1; }
+    .hero-title .title-line1 { 
+      display: block; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 0px; 
+    } 
 
-    .hero-title {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.3;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
+    .hero-title .title-line2 { 
+      display: block; color: #C8E84A; font-size: 30px; font-weight: 800; 
+      letter-spacing: -1px; margin-top: 2px; 
+    } 
 
-    .hero-title span { color: var(--green); }
+    .hero-welcome { 
+      font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; 
+      color: #ffffff; margin-top: 20px; padding-top: 18px; 
+      border-top: 1px solid rgba(197,232,74,0.22); 
+    } 
 
-    .progress-wrap {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 28px;
-      position: sticky;
-      top: 58px;
-      z-index: 90;
-      box-shadow: 0 2px 12px rgba(26,43,26,0.06);
-    }
+    .hero-welcome-title { 
+      font-size: 13px; font-weight: 800; color: #C8E84A; 
+      margin-bottom: 5px; letter-spacing: -0.2px; 
+      opacity: 0; 
+      animation: blinkThenFix 3.2s ease-out 0.3s forwards; 
+    } 
 
-    .progress-track {
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
+    .hero-welcome-desc { 
+      font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.82); 
+      line-height: 1.7; letter-spacing: -0.1px; 
+      opacity: 0; 
+      animation: blinkThenFix 3.2s ease-out 0.6s forwards; 
+    } 
 
-    .p-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      flex: 1;
-      gap: 5px;
-      position: relative;
-    }
+    @keyframes blinkThenFix { 
+      0%   { opacity: 0; } 
+      10%  { opacity: 1; } 
+      22%  { opacity: 0.2; } 
+      34%  { opacity: 1; } 
+      46%  { opacity: 0.2; } 
+      58%  { opacity: 1; } 
+      70%  { opacity: 0.4; } 
+      85%  { opacity: 1; } 
+      100% { opacity: 1; } 
+    } 
 
-    .p-step::after {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: calc(50% + 14px);
-      right: calc(-50% + 14px);
-      height: 2px;
-      background: var(--border);
-      z-index: 0;
-    }
+    .progress-wrap { 
+      background: var(--white); border-bottom: 1px solid var(--border); 
+      padding: 18px 28px; position: sticky; top: 58px; z-index: 90; 
+      box-shadow: 0 2px 12px rgba(26,43,26,0.06); 
+    } 
 
-    .p-step:last-child::after { display: none; }
+    .progress-track { 
+      max-width: 760px; margin: 0 auto; 
+      display: flex; align-items: center; gap: 0; 
+    } 
 
-    .p-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
+    .p-step { 
+      display: flex; flex-direction: column; align-items: center; 
+      cursor: pointer; flex: 1; gap: 5px; position: relative; 
+    } 
+
+    .p-step::after { 
+      content: ''; position: absolute; top: 14px; 
+      left: calc(50% + 14px); right: calc(-50% + 14px); 
+      height: 2px; background: var(--border); z-index: 0; 
+    } 
+
+    .p-step:last-child::after { display: none; } 
+
+    .p-num { 
+      width: 28px; height: 28px; border-radius: 50%; 
+      background: var(--border); color: var(--text-muted); 
+      font-size: 12px; font-weight: 700; 
+      display: flex; align-items: center; justify-content: center; 
+      position: relative; z-index: 1; 
+      transition: all 0.25s ease; border: 2px solid transparent; 
+    } 
+
+    .p-step.done .p-num { background: var(--green); color: var(--dark); border-color: var(--green-dark); } 
+    .p-step.active .p-num { 
+      background: var(--dark); color: var(--green); border-color: var(--green); 
+      box-shadow: 0 0 0 3px rgba(197,232,74,0.2); 
+    } 
+
+    .p-label { 
+      font-size: 10px; font-weight: 600; color: var(--text-muted); 
+      text-align: center; white-space: nowrap; transition: color 0.2s; 
+      max-width: 60px; overflow: hidden; text-overflow: ellipsis; 
+    } 
+
+    .p-step.active .p-label { color: var(--dark); } 
+
+    .main-wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; } 
+
+    .step-card { 
+      background: var(--white); border: 1.5px solid var(--border); 
+      border-radius: var(--r-lg); margin-bottom: 12px; overflow: hidden; 
+      box-shadow: var(--shadow-sm); 
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s; 
+    } 
+
+    .step-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); } 
+    .step-card.active { box-shadow: var(--shadow-lg); border-color: #B8D870; } 
+
+    .step-header { 
+      display: flex; align-items: center; gap: 16px; padding: 20px 22px; 
+      cursor: pointer; transition: background 0.15s; 
+      -webkit-tap-highlight-color: transparent; user-select: none; 
+    } 
+
+    .step-header:hover { background: var(--green-pale); } 
+    .step-card.active .step-header { background: var(--green-pale); } 
+
+    .step-num-badge { 
+      width: 44px; height: 44px; border-radius: 12px; 
+      display: flex; align-items: center; justify-content: center; 
+      font-size: 18px; font-weight: 800; flex-shrink: 0; 
+      font-family: 'Montserrat', sans-serif; transition: all 0.25s; 
+    } 
+
+    .s1 .step-num-badge { background: #D4EAE4; color: #1A5A40; } 
+    .s2 .step-num-badge { background: #FDE8D4; color: #8A3000; } 
+    .s3 .step-num-badge { background: #F4D4E8; color: #6A0040; } 
+
+    .step-card.active .step-num-badge { background: var(--dark) !important; color: var(--green) !important; } 
+
+    .step-label { flex: 1; } 
+
+    .step-tag { 
+      font-size: 10px; font-weight: 700; letter-spacing: 0.8px; 
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; 
+    } 
+
+    .step-title { font-size: 17px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; } 
+
+    /* ▼ 변경: chevron-wrap → click-hint */
+    .click-hint {
+      flex-shrink: 0;
+      font-size: 13px;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-      transition: all 0.25s ease;
-      border: 2px solid transparent;
-    }
-
-    .p-step.done .p-num {
-      background: var(--green);
-      color: var(--dark);
-      border-color: var(--green-dark);
-    }
-
-    .p-step.active .p-num {
-      background: var(--dark);
-      color: var(--green);
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(197,232,74,0.2);
-    }
-
-    .p-label {
-      font-size: 10px;
-      font-weight: 600;
       color: var(--text-muted);
-      text-align: center;
       white-space: nowrap;
       transition: color 0.2s;
-      max-width: 60px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .p-step.active .p-label { color: var(--dark); }
-
-    .main-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 28px 20px 80px;
-    }
-
-    .step-card {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-lg);
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
-    }
-
-    .step-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }
-
-    .step-card.active {
-      box-shadow: var(--shadow-lg);
-      border-color: #B8D870;
-    }
-
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 22px;
-      cursor: pointer;
-      transition: background 0.15s;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-
-    .step-header:hover { background: var(--green-pale); }
-    .step-card.active .step-header { background: var(--green-pale); }
-
-    .step-num-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 800;
-      flex-shrink: 0;
-      font-family: 'Montserrat', sans-serif;
-      transition: all 0.25s;
-    }
-
-    .s1 .step-num-badge { background: #D4EAE4; color: #1A5A40; }
-    .s2 .step-num-badge { background: #FDE8D4; color: #8A3000; }
-    .s3 .step-num-badge { background: #F4D4E8; color: #6A0040; }
-
-    .step-card.active .step-num-badge {
-      background: var(--dark) !important;
-      color: var(--green) !important;
-    }
-
-    .step-label { flex: 1; }
-
-    .step-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 3px;
-    }
-
-    .step-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.3px;
-    }
-
-    .chevron-wrap {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+      padding: 4px 8px;
+      border-radius: 20px;
       background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.2s, transform 0.25s;
     }
 
-    .step-card.active .chevron-wrap {
-      background: var(--dark);
-      transform: rotate(180deg);
-    }
-
-    .chevron-wrap svg { color: var(--text-muted); }
-    .step-card.active .chevron-wrap svg { color: var(--green); }
-
-    .step-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .step-body.open { max-height: 3000px; }
-
-    .step-body-inner {
-      padding: 4px 22px 22px;
-      border-top: 1.5px solid var(--border);
-    }
-
-    .tip-box {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--green-pale) 0%, #EEF8D0 100%);
-      border: 1px solid rgba(197,232,74,0.5);
-      border-left: 3px solid var(--green-dark);
-      border-radius: 0 var(--r-sm) var(--r-sm) 0;
-      padding: 12px 14px;
-      margin: 16px 0 14px;
-    }
-
-    .tip-icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      margin-top: 1px;
-      color: #6A9A10;
-    }
-
-    .tip-text {
-      font-size: 13.5px;
-      color: #3A5A10;
-      line-height: 1.65;
-      font-weight: 500;
-    }
-
-    .tip-text strong { font-weight: 700; color: #2A4A08; }
-
-    .section-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      margin: 18px 0 10px;
-      padding-left: 10px;
-      border-left: 3px solid var(--green-dark);
-      letter-spacing: -0.2px;
-    }
-
-    .item-list { list-style: none; }
-
-    .item-list > li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 14.5px;
-      color: var(--text-primary);
-      line-height: 1.55;
-    }
-
-    .item-list > li:last-child { border-bottom: none; }
-
-    .item-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .item-content { flex: 1; }
-
-    .withdrawal-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
-
-    .wd-card {
-      border: 1.5px solid var(--border);
-      border-radius: var(--r-md);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .wd-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: linear-gradient(to right, var(--green-pale), var(--white));
-      border-bottom: 1px solid var(--border);
-    }
-
-    .wd-icon-wrap {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .wd-header-text { flex: 1; }
-
-    .wd-method-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-
-    .wd-method-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.3px;
-    }
-
-    .wd-card-body {
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .wd-desc {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    .wd-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: var(--dark);
+    .step-card.active .click-hint {
       color: var(--green);
-      border-radius: var(--r-sm);
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.15s, transform 0.15s;
-      align-self: flex-start;
-      letter-spacing: -0.2px;
+      background: var(--dark);
     }
 
-    .wd-link-btn:hover {
-      background: #2A4A1A;
-      transform: translateX(2px);
+    .step-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); } 
+    .step-body.open { max-height: 5000px; } 
+
+    .step-body-inner { padding: 4px 22px 22px; border-top: 1.5px solid var(--border); } 
+
+    .tip-box { 
+      display: flex; align-items: flex-start; gap: 10px; 
+      background: #ffffff; border: 1.5px solid #c8dfc8; border-radius: 10px; 
+      padding: 14px 16px; margin: 16px 0 14px; 
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04); 
+    } 
+
+    .tip-icon { 
+      flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px; 
+      color: #3a7d44; background: #e6f4ea; border-radius: 50%; padding: 3px; 
+      display: flex; align-items: center; justify-content: center; 
+    } 
+
+    .tip-icon svg { width: 14px; height: 14px; color: #3a7d44; } 
+
+    .tip-text { font-size: 13.5px; color: #2d4a2d; line-height: 1.65; font-weight: 400; } 
+    .tip-text strong { font-weight: 700; color: #1a3a1a; } 
+
+    .non-face-notice { 
+      text-align: right; font-size: 12px; color: #E07000; 
+      font-weight: 600; margin-bottom: 8px; margin-top: 16px; letter-spacing: -0.1px; 
+    } 
+
+    .section-title { 
+      font-size: 14px; font-weight: 700; color: var(--text-secondary); 
+      margin: 18px 0 10px; padding-left: 10px; 
+      border-left: 3px solid var(--green-dark); letter-spacing: -0.2px; 
+    } 
+
+    .item-list { list-style: none; } 
+
+    .item-list > li { 
+      display: flex; align-items: flex-start; gap: 12px; 
+      padding: 13px 0; border-bottom: 1px solid var(--border); 
+      font-size: 14.5px; color: var(--text-primary); line-height: 1.55; 
+    } 
+
+    .item-list > li:last-child { border-bottom: none; } 
+    .item-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; } 
+    .item-content { flex: 1; } 
+
+    .other-cert-notice { 
+      display: block; font-size: 12px; color: #E07000; 
+      font-weight: 600; margin-top: 8px; line-height: 1.6; letter-spacing: -0.1px; 
+    } 
+
+    .other-cert-notice a { 
+      color: #E07000; font-weight: 700; 
+      text-decoration: underline; text-underline-offset: 2px; 
+    } 
+
+    .withdrawal-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 10px; } 
+
+    .wd-card { 
+      border: 1.5px solid var(--border); border-radius: var(--r-md); 
+      overflow: hidden; background: var(--white); box-shadow: var(--shadow-sm); 
+    } 
+
+    /* ▼ 변경: wd-card-header에 cursor pointer + 아코디언 스타일 */
+    .wd-card-header { 
+      display: flex; align-items: center; gap: 12px; padding: 14px 16px; 
+      background: linear-gradient(to right, var(--green-pale), var(--white)); 
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s;
     }
 
-    .wd-detail-box {
-      background: var(--bg);
-      border-radius: var(--r-sm);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .wd-card-header:hover {
+      background: linear-gradient(to right, #edf7c8, #f5fbea);
     }
 
-    .wd-detail-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    .wd-card.wd-open .wd-card-header {
+      background: linear-gradient(to right, #dff094, #f0f9d4);
     }
 
-    .wd-detail-row .label {
-      font-weight: 700;
-      color: var(--text-primary);
+    .wd-header-text { flex: 1; } 
+
+    .wd-method-label { 
+      display: inline-block; 
+      font-size: 11px; font-weight: 800; letter-spacing: 0.6px; 
+      color: #1A2B1A; background: #C5E84A; 
+      border-radius: 20px; padding: 3px 12px; margin-bottom: 7px; 
+    } 
+
+    .wd-method-title { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; } 
+
+    /* ▼ 추가: wd-card 아코디언 버튼 */
+    .wd-toggle-btn {
       flex-shrink: 0;
-    }
-
-    .wd-detail-row.indent { padding-left: 16px; }
-
-    .wd-fee-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      color: #5A7A20;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 20px;
       background: rgba(197,232,74,0.25);
       border: 1px solid rgba(197,232,74,0.5);
-      border-radius: 4px;
-      padding: 1px 7px;
-      margin-left: 4px;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .wd-notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      background: #FFF8E1;
-      border: 1px solid #FFE082;
-      border-radius: var(--r-sm);
-      padding: 10px 12px;
-      font-size: 13px;
-      color: #795548;
-      line-height: 1.6;
-    }
-
-    .wd-notice svg { flex-shrink: 0; margin-top: 1px; color: #F9A825; }
-
-    .wd-star-notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      background: var(--green-pale);
-      border: 1px solid rgba(197,232,74,0.6);
-      border-radius: var(--r-sm);
-      padding: 10px 12px;
-      font-size: 13px;
-      color: #3A5A10;
-      line-height: 1.6;
-    }
-
-    .wd-star-notice svg { flex-shrink: 0; margin-top: 1px; color: #6A9A10; }
-
-    .wd-info-cell {
-      background: var(--bg);
-      border-radius: var(--r-sm);
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-    }
-
-    .wd-info-cell-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .wd-info-cell-value {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 20px;
+    .wd-card.wd-open .wd-toggle-btn {
       background: var(--dark);
       color: var(--green);
-      border-radius: var(--r-md);
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-      letter-spacing: -0.3px;
+      border-color: var(--dark);
     }
 
-    .cta-btn:hover {
-      background: var(--dark2);
-      box-shadow: 0 4px 16px rgba(26,43,26,0.2);
-      transform: translateY(-1px);
-    }
-
-    .text-link {
-      color: var(--text-primary);
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      vertical-align: middle;
-      transition: color 0.15s;
-    }
-
-    .text-link:hover { color: #2E6010; }
-
-    .yt-thumb {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 160px;
-      height: 90px;
-      border-radius: var(--r-sm);
-      position: relative;
-      text-decoration: none;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    /* ▼ 변경: wd-card-body를 아코디언으로 */
+    .wd-card-body { 
+      padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;
+      max-height: 0;
       overflow: hidden;
-      background-color: #000;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
-    .yt-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.28);
+    .wd-card.wd-open .wd-card-body {
+      max-height: 2000px;
+      padding: 14px 16px;
     }
 
-    .yt-play {
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
-    }
+    .wd-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; } 
 
-    .footer {
-      background: var(--dark);
-      padding: 36px 28px;
-      margin-top: 20px;
-    }
+    .wd-link-btn { 
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; 
+      background: var(--dark); color: var(--green); border-radius: var(--r-sm); 
+      font-size: 13px; font-weight: 700; text-decoration: none; 
+      transition: background 0.15s, transform 0.15s; 
+      align-self: flex-start; letter-spacing: -0.2px; 
+    } 
 
-    .footer-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    .wd-link-btn:hover { background: #2A4A1A; transform: translateX(2px); } 
+    .wd-link-btn svg { color: #C5E84A; stroke: #C5E84A; } 
 
-    .footer-copy {
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.3);
-      line-height: 1.8;
-    }
+    .wd-detail-box { 
+      background: var(--bg); border-radius: var(--r-sm); 
+      padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; 
+    } 
 
-    @media (max-width: 540px) {
-      .hero-title { font-size: 20px; }
-      .p-label { display: none; }
-    }
+    .wd-detail-row { 
+      display: flex; align-items: flex-start; gap: 8px; 
+      font-size: 13px; color: var(--text-secondary); line-height: 1.6; 
+    } 
 
-    .wd-star-notice-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .wd-star-notice-btn:hover {
-      background-color: #f9f9f9;
-    }
+    .wd-detail-row .label { font-weight: 700; color: var(--text-primary); flex-shrink: 0; } 
+    .wd-detail-row.indent { padding-left: 16px; } 
 
-    .wd-star-notice {
-      margin-top: 10px;
-      padding: 12px;
-      background-color: #fafafa;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
+    .wd-fee-tag { 
+      display: inline-block; font-size: 11px; font-weight: 600; color: #5A7A20; 
+      background: rgba(197,232,74,0.25); border: 1px solid rgba(197,232,74,0.5); 
+      border-radius: 4px; padding: 1px 7px; margin-left: 4px; 
+    } 
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <div class="nav-dot-group">
-        <div class="nav-dot"></div>
-        <div class="nav-dot"></div>
-        <div class="nav-dot"></div>
-      </div>
-    </div>
-  </nav>
+    .wd-notice { 
+      display: flex; align-items: flex-start; gap: 8px; 
+      background: #ffffff; border: 1.5px solid #c8dfc8; border-radius: 10px; 
+      padding: 12px 14px; font-size: 13px; color: #2d4a2d; line-height: 1.6; 
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04); 
+    } 
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-orb1"></div>
-    <div class="hero-orb2"></div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <h1 class="hero-title">
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-            <img class="hero-app-icon"
-              src="https://raw.githubusercontent.com/choisera0413-maker/minor-guide1/main/mark3.jpg"
-              alt="나무증권"
-              style="width:80px;height:80px;border-radius:20px;object-fit:cover;flex-shrink:0;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:2px solid rgba(197,232,74,0.3);"
-            />
-            <span>우리아이 계좌 이용가이드</span>
-          </div>
-        </h1>
-      </div>
-    </div>
-  </section>
+    .wd-notice svg { flex-shrink: 0; margin-top: 1px; color: #3a7d44; } 
 
-  <!-- PROGRESS TRACKER (3단계) -->
-  <div class="progress-wrap">
-    <div class="progress-track">
-      <div class="p-step" onclick="scrollToStep('step1')">
-        <div class="p-num">1</div>
-        <div class="p-label">로그인</div>
-      </div>
-      <div class="p-step" onclick="scrollToStep('step2')">
-        <div class="p-num">2</div>
-        <div class="p-label">거래시작</div>
-      </div>
-      <div class="p-step" onclick="scrollToStep('step3')">
-        <div class="p-num">3</div>
-        <div class="p-label">출금방법</div>
-      </div>
-    </div>
-  </div>
+    .wd-star-notice { 
+      display: flex; align-items: flex-start; gap: 8px; 
+      background: var(--green-pale); border: 1px solid rgba(197,232,74,0.6); 
+      border-radius: var(--r-sm); padding: 10px 12px; 
+      font-size: 13px; color: #3A5A10; line-height: 1.6; 
+    } 
 
-  <!-- MAIN -->
-  <main class="main-wrap">
+    .wd-star-notice svg { flex-shrink: 0; margin-top: 1px; color: #6A9A10; } 
 
-    <!-- STEP 1 -->
-    <div class="step-card s1" id="step1">
-      <div class="step-header" onclick="toggle('step1')">
-        <div class="step-num-badge">1</div>
-        <div class="step-label">
-          <div class="step-tag">STEP 01</div>
-          <div class="step-title">로그인 하기</div>
-        </div>
-        <div class="chevron-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-      </div>
-      <div class="step-body" id="body-step1">
-        <div class="step-body-inner">
-          <div class="section-title">ID 등록 및 공동인증서 발급</div>
-          <div class="tip-box">
-            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
-            </svg>
-            <div class="tip-text"><strong>TIP.</strong> 계좌 개설 승인 시 발송되는 알림톡 내용 중 계좌번호를 기억하세요!</div>
-          </div>
-          <ul class="item-list">
-            <li>
-              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              <a href="https://link.mynamuh.com/f0y67a" target="_blank" class="cta-btn">
-                ID 등록 바로가기
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </li>
-            <li>
-              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-              <div class="item-content" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-                <div>
-                  공동인증서 발급 방법은
-                  <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="text-link">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000" style="display:inline-block;vertical-align:middle;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    '공동인증서 발급 방법 영상'
-                  </a>을 참고하세요.
-                  <br>
-                  <a href="https://link.mynamuh.com/cva1nm" target="_blank" class="cta-btn" style="display:inline-flex;margin-top:8px;">
-                    공동인증서 발급 바로가기
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  </a>
-                </div>
-                <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="yt-thumb" style="background-image:url('https://img.youtube.com/vi/zxqyw/mqdefault.jpg');background-size:cover;background-position:center;">
-                  <div class="yt-overlay"></div>
-                  <svg class="yt-play" width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    .wd-info-cell { 
+      background: var(--bg); border-radius: var(--r-sm); 
+      padding: 10px 12px; border: 1px solid var(--border); 
+    } 
+
+    .wd-info-cell-label { 
+      font-size: 11px; font-weight: 700; color: var(--text-muted); 
+      letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 4px; 
+    } 
+
+    .wd-info-cell-value { font-size: 13px; font-weight: 700; color: var(--text-primary); } 
+
+    .wd-wire-notice { 
+      font-size: 12px; color: #E07000; font-weight: 600; 
+      line-height: 1.7; letter-spacing: -0.1px; margin-bottom: 2px; 
+    } 
+
+    .cta-btn { 
+      display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; 
+      background: var(--dark); color: var(--green); border-radius: var(--r-md); 
+      font-size: 14px; font-weight: 700; text-decoration: none; 
+      transition: all 0.2s; letter-spacing: -0.3px; 
+    } 
+
+    .cta-btn:hover { 
+      background: var(--dark2); 
+      box-shadow: 0 4px 16px rgba(26,43,26,0.2); transform: translateY(-1px); 
+    } 
+
+    .text-link { 
+      color: var(--text-primary); font-weight: 700; 
+      text-decoration: underline; text-underline-offset: 3px; 
+      display: inline-flex; align-items: center; gap: 4px; 
+      vertical-align: middle; transition: color 0.15s; 
+    } 
+
+    .text-link:hover { color: #2E6010; } 
+
+    .yt-thumb { 
+      display: flex; align-items: center; justify-content: center; 
+      width: 160px; height: 90px; border-radius: var(--r-sm); 
+      position: relative; text-decoration: none; flex-shrink: 0; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); overflow: hidden; background-color: #000; 
+    } 
+
+    .yt-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); } 
+
+    .yt-play { 
+      position: relative; z-index: 1; 
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7)); 
+    } 
+
+    .bottom-info-grid { 
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; 
+    } 
+
+    .bottom-info-box { 
+      background: var(--white); border: 1.5px solid var(--border); 
+      border-radius: var(--r-md); padding: 16px; 
+      display: flex; flex-direction: column; gap: 10px; 
+    } 
+
+    .bottom-info-box-title { font-size: 13px; font-weight: 700; color: var(--text-primary); line-height: 1.5; letter-spacing: -0.2px; } 
+    .bottom-info-box-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.65; } 
+    .bottom-info-box-desc .orange { color: #E07000; font-weight: 600; } 
+
+    .bottom-link { 
+      display: inline-flex; align-items: center; gap: 5px; 
+      font-size: 12.5px; font-weight: 700; color: var(--dark); 
+      text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s; 
+    } 
+
+    .bottom-link:hover { color: #2E6010; } 
+
+    @media (max-width: 480px) { .bottom-info-grid { grid-template-columns: 1fr; } } 
+
+    .footer { background: var(--dark); padding: 36px 28px; margin-top: 20px; } 
+    .footer-inner { max-width: 760px; margin: 0 auto; } 
+    .footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.3); line-height: 1.8; } 
+
+    @media (max-width: 540px) { 
+      .hero-title .title-line2 { font-size: 24px; } 
+      .p-label { display: none; } 
+    } 
+
+    .wd-star-notice-btn { 
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; 
+      background-color: #fff; border: 1px solid #ddd; border-radius: 4px; 
+      font-size: 14px; font-weight: bold; cursor: pointer; 
+    } 
+    .wd-star-notice-btn:hover { background-color: #f9f9f9; } 
+  </style> 
+</head> 
+<body> 
+
+  <nav class="navbar"> 
+    <div class="nav-brand"> 
+      <div class="nav-dot-group"> 
+        <div class="nav-dot"></div> 
+        <div class="nav-dot"></div> 
+        <div class="nav-dot"></div> 
+      </div> 
+    </div> 
+  </nav> 
+
+  <section class="hero"> 
+    <div class="hero-grid"></div> 
+    <div class="hero-orb1"></div> 
+    <div class="hero-orb2"></div> 
+    <div class="hero-inner"> 
+      <div class="hero-text"> 
+        <h1 class="hero-title"> 
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;"> 
+            <img src="https://raw.githubusercontent.com/choisera0413-maker/minor-guide1/main/mark3.jpg" alt="나무증권" 
+              style="width:80px;height:80px;border-radius:20px;object-fit:cover;flex-shrink:0;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:2px solid rgba(197,232,74,0.3);" /> 
+            <div> 
+              <span class="title-line1">우리아이 계좌</span> 
+              <span class="title-line2">이용가이드</span> 
+            </div> 
+          </div> 
+        </h1> 
+        <div class="hero-welcome"> 
+          <div class="hero-welcome-title">우리아이 계좌 개설을 환영해요!</div> 
+          <div class="hero-welcome-desc">계좌 개설 후 꼭 필요한 로그인 방법, 거래 등록, 출금 방법까지 쉽고 편리하게 확인할 수 있도록 한곳에 모아두었어요.</div> 
+        </div> 
+      </div> 
+    </div> 
+  </section> 
+
+  <div class="progress-wrap"> 
+    <div class="progress-track"> 
+      <div class="p-step" onclick="scrollToStep('step1')"> 
+        <div class="p-num">1</div> 
+        <div class="p-label">로그인</div> 
+      </div> 
+      <div class="p-step" onclick="scrollToStep('step2')"> 
+        <div class="p-num">2</div> 
+        <div class="p-label">거래</div> 
+      </div> 
+      <div class="p-step" onclick="scrollToStep('step3')"> 
+        <div class="p-num">3</div> 
+        <div class="p-label">출금</div> 
+      </div> 
+    </div> 
+  </div> 
+
+  <main class="main-wrap"> 
+
+    <!-- STEP 1 --> 
+    <div class="step-card s1" id="step1"> 
+      <div class="step-header" onclick="toggle('step1')"> 
+        <div class="step-num-badge">1</div> 
+        <div class="step-label"> 
+          <div class="step-tag">STEP 01</div> 
+          <div class="step-title">로그인 방법</div> 
+        </div> 
+        <div class="click-hint">☝️ 여기 클릭</div>
+      </div> 
+      <div class="step-body" id="body-step1"> 
+        <div class="step-body-inner"> 
+          <div class="section-title">ID 등록 및 공동인증서 발급</div> 
+          <div class="tip-box"> 
+            <div class="tip-icon"> 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line> 
+              </svg> 
+            </div> 
+            <div class="tip-text"><strong>TIP.</strong> 계좌개설 승인 안내 알림톡 내용 중 계좌번호를 기억하세요!</div> 
+          </div> 
+          <ul class="item-list"> 
+            <li> 
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> 
+              <a href="https://link.mynamuh.com/f0y67a" target="_blank" class="cta-btn"> 
+                ID 등록 바로가기 
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> 
+              </a> 
+            </li> 
+            <li> 
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg> 
+              <div class="item-content"> 
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;"> 
+                  <div> 
+                    공동인증서 발급 방법은 
+                    <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="text-link"> 
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000" style="display:inline-block;vertical-align:middle;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> 
+                      '공동인증서 발급 방법 영상' 
+                    </a>을 참고하세요. 
+                    <br> 
+                    <a href="https://link.mynamuh.com/cva1nm" target="_blank" class="cta-btn" style="display:inline-flex;margin-top:8px;"> 
+                      공동인증서 발급 바로가기 
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 
+                    </a> 
+                  </div> 
+                  <a href="https://m.nhsec.com/w/zxqyw" target="_blank" class="yt-thumb" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAL4BDYDASIAAhEBAxEB/8QAHgABAAEEAwEBAAAAAAAAAAAAAAgCBgcJAQMFBAr/xAB4EAAABQMDAgMBCgsCBAoRDREAAQIDBAUGBwgREgkhExQxQQoVGSIyUVJTkaEWV1hhYnGBkpbS5CNCFxgz1SQlQ3KCl7G1wdQaNDg5SVVZZGVmdJWisrTT1icoRkdWdoSTlLPD5fEmNTZERWNnaHN3g4Wlp7bC0f/EABsBAQADAQEBAQAAAAAAAAAAAAABAwQCBQYH/8QAPBEBAAIBAgQDBQYFBAICAwEAAAECAwQRBRIhMRVRoRNBUlNhFBYigZHRBjJxscEjQuHwJDM08Qc1YoL/2gAMAwEAAhEDEQA/AN+AAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3h5d76H3hvAoAV+Xe+h94eXe+h94bwKAFfl3vofeHl3vofeG8CgBX5d76H3gG8D6QABWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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');background-size:cover;background-position:center;"> 
+                    <div class="yt-overlay"></div> 
+                    <svg class="yt-play" width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg> 
+                  </a> 
+
+<span class="other-cert-notice"> 
+  ⚠️ 다른 증권사에서 사용하는 아이 증권용 공동인증서가 있는 경우, <a href="https://link.mynamuh.com/cva1nm" target="_blank" style="text-decoration: underline; color: inherit;">타기관 인증서 등록</a>이 필요해요.
+</span>
+
+                </div> 
+              </div> 
+            </li> 
+          </ul> 
+        </div> 
+      </div> 
+    </div> 
 
     <!-- STEP 2 -->
-    <div class="step-card s2" id="step2">
-      <div class="step-header" onclick="toggle('step2')">
-        <div class="step-num-badge">2</div>
-        <div class="step-label">
-          <div class="step-tag">STEP 02</div>
-          <div class="step-title">거래 시작하기</div>
-        </div>
-        <div class="chevron-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-      </div>
-      <div class="step-body" id="body-step2">
-        <div class="step-body-inner">
-          <div class="tip-box">
-            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
-            </svg>
-            <div class="tip-text"><strong>TIP.</strong> 국내주식 주문 외 업무 처리 시 자녀 명의로 별도 로그인이 필요해요!</div>
-          </div>
-          <ul class="item-list">
-            <li>
-              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              <a href="https://link.mynamuh.com/dlfwfw" target="_blank" class="text-link">
-                공모청약 이용가이드
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </li>
-            <li>
-              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              <a href="https://link.mynamuh.com/ncwhsr" target="_blank" class="text-link">
-                해외주식 거래신청 바로가기
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </li>
+    <div class="step-card s2" id="step2"> 
+      <div class="step-header" onclick="toggle('step2')"> 
+        <div class="step-num-badge">2</div> 
+        <div class="step-label"> 
+          <div class="step-tag">STEP 02</div> 
+          <div class="step-title">거래 등록</div> 
+        </div> 
+        <div class="click-hint">☝️ 여기 클릭</div>
+      </div> 
+      <div class="step-body" id="body-step2"> 
+        <div class="step-body-inner"> 
+          <div class="tip-box"> 
+            <div class="tip-icon"> 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line> 
+              </svg> 
+            </div> 
+            <div class="tip-text"><strong>TIP.국내주식만 거래 시 개설한 부모님 계좌로 로그인해도 아이 계좌를 선택해 매매할 수 있어요.</strong><br><br>
+              단, 공모주 청약, 해외주식 거래등록, 파생ETP 거래등록 등 <strong>각종 약정 신청은 아이 계좌로 별도 로그인</strong>이 필요해요!</div> 
+          </div> 
+          <ul class="item-list"> 
+            <li> 
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 
+              <a href="https://link.mynamuh.com/dlfwfw" target="_blank" class="text-link"> 
+                공모청약 이용가이드 
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> 
+              </a> 
+            </li> 
+            <li> 
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> 
+              <a href="https://link.mynamuh.com/ncwhsr" target="_blank" class="text-link"> 
+                해외주식 거래신청 바로가기 
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> 
+              </a> 
+            </li> 
             <li>
               <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="#4A8010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-              <a href="https://link.mynamuh.com/0xdbsc" target="_blank" class="text-link">
-                파생ETP 거래신청 바로가기
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
+              <div class="item-content" style="display: flex; flex-direction: column;">
+                <a href="https://link.mynamuh.com/0xdbsc" target="_blank" class="text-link">
+                  파생ETP 거래신청 바로가기
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
             </li>
-          </ul>
-        </div>
-      </div>
+             <div style="font-size: 12px; color: #E07000; font-weight: 600; margin-top: 6px; letter-spacing: -0.1px;">
+                  ⚠️ 아이 연금저축·IRP·금현물계좌 등 비대면 개설이 불가해요.
+                </div>
+          </ul> 
+        </div> 
+      </div> 
     </div>
+    
+    <!-- STEP 3 --> 
+    <div class="step-card s3" id="step3"> 
+      <div class="step-header" onclick="toggle('step3')"> 
+        <div class="step-num-badge">3</div> 
+        <div class="step-label"> 
+          <div class="step-tag">STEP 03</div> 
+          <div class="step-title">출금 방법</div> 
+        </div> 
+        <div class="click-hint">☝️ 여기 클릭</div>
+      </div> 
+      <div class="step-body" id="body-step3"> 
+        <div class="step-body-inner"> 
+          <div class="tip-box"> 
+            <div class="tip-icon"> 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line> 
+              </svg> 
+            </div> 
+            <div class="tip-text"><strong>TIP.</strong> 출금 희망 시 아이 계좌로 별도 로그인이 필요해요!</div> 
+          </div> 
 
-    <!-- STEP 3 -->
-    <div class="step-card s3" id="step3">
-      <div class="step-header" onclick="toggle('step3')">
-        <div class="step-num-badge">3</div>
-        <div class="step-label">
-          <div class="step-tag">STEP 03</div>
-          <div class="step-title">출금 방법 알아보기</div>
-        </div>
-        <div class="chevron-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-      </div>
-      <div class="step-body" id="body-step3">
-        <div class="step-body-inner">
-          <div class="tip-box">
-            <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.1-3 5.2V17H9v-2.8C7.2 13.1 6 11.2 6 9a6 6 0 0 1 6-6z"></path>
-            </svg>
-            <div class="tip-text"><strong>TIP.</strong> 자녀 명의로 별도 로그인이 필요해요!</div>
-          </div>
+          <ul class="withdrawal-list"> 
 
-          <ul class="withdrawal-list">
+            <!-- 방법 01 -->
+            <li class="wd-card" id="wd1"> 
+              <div class="wd-card-header" onclick="toggleWd('wd1')"> 
+                <div class="wd-header-text"> 
+                  <div class="wd-method-label">방법 01</div> 
+                  <div class="wd-method-title">아이 은행계좌 약정 등록</div> 
+                </div>
+                <div class="wd-toggle-btn">👆 눌러보기</div>
+              </div> 
+              <div class="wd-card-body"> 
+                <p class="wd-desc">아이의 은행계좌 연결 후 나무증권 앱에서 출금할 수 있어요.</p> 
+                <a href="https://link.mynamuh.com/hvs7l0" target="_blank" class="wd-link-btn"> 
+                  은행이체약정 서비스 신청 바로가기 
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> 
+                </a> 
+              </div> 
+            </li> 
 
-            <li class="wd-card">
-              <div class="wd-card-header">
-                <div class="wd-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+            <!-- 방법 02 -->
+            <li class="wd-card" id="wd2"> 
+              <div class="wd-card-header" onclick="toggleWd('wd2')"> 
+                <div class="wd-header-text"> 
+                  <div class="wd-method-label">방법 02</div> 
+                  <div class="wd-method-title">아이 타기관 실물 OTP 등록</div> 
                 </div>
-                <div class="wd-header-text">
-                  <div class="wd-method-label">방법 01</div>
-                  <div class="wd-method-title">자녀명의 은행이체 약정 등록</div>
-                </div>
-              </div>
-              <div class="wd-card-body">
-                <p class="wd-desc">NH투자증권에 자녀명의 은행계좌를 약정 등록 후 해당 은행계좌로 출금할 수 있어요.</p>
-                <a href="https://link.mynamuh.com/hvs7l0" target="_blank" class="wd-link-btn">
-                  은행이체약정 서비스 신청 바로가기
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              </div>
-            </li>
+                <div class="wd-toggle-btn">👆 눌러보기</div>
+              </div> 
+              <div class="wd-card-body"> 
+                <p class="wd-desc">다른 금융사(은행 또는 증권)에서 발급한 아이의 실물 OTP를 보유한 경우, 타기관 OTP 등록 후 나무증권 앱에서 출금할 수 있어요.</p> 
+                <a href="https://link.mynamuh.com/dgoi0l" target="_blank" class="wd-link-btn"> 
+                  타기관 OTP 등록 바로가기 
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> 
+                </a> 
+              </div> 
+            </li> 
 
-            <li class="wd-card">
-              <div class="wd-card-header">
-                <div class="wd-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <!-- 방법 03 -->
+            <li class="wd-card" id="wd3"> 
+              <div class="wd-card-header" onclick="toggleWd('wd3')"> 
+                <div class="wd-header-text"> 
+                  <div class="wd-method-label">방법 03</div> 
+                  <div class="wd-method-title">보안카드 또는 실물OTP 발급 (영업점 방문)</div> 
                 </div>
-                <div class="wd-header-text">
-                  <div class="wd-method-label">방법 02</div>
-                  <div class="wd-method-title">자녀명의 타기관 실물 OTP 보유</div>
-                </div>
-              </div>
-              <div class="wd-card-body">
-                <p class="wd-desc">다른 금융사(은행 또는 증권)에서 발급한 자녀 명의 실물 OTP를 보유한 경우, 타기관 OTP 등록 후 출금할 수 있어요.</p>
-                <a href="https://link.mynamuh.com/dgoi0l" target="_blank" class="wd-link-btn">
-                  타기관 OTP 등록 바로가기
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              </div>
-            </li>
+                <div class="wd-toggle-btn">👆 눌러보기</div>
+              </div> 
+              <div class="wd-card-body"> 
+                <div class="wd-notice"> 
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> 
+                  <span>NH투자증권 영업점 방문 시 아이 보안카드 또는 실물OTP를 발급받을 수 있어요. <strong>(중복사용 불가)</strong></span> 
+                </div> 
+                <div class="wd-detail-box"> 
+                  <div class="wd-detail-row"> 
+                    <span class="label">① 보안카드</span> 
+                    <span>NH투자증권에서만 사용 가능한 숫자카드</span> 
+                  </div> 
+                  <div class="wd-detail-row" style="margin-top:6px;"> 
+                    <span class="label">② 실물OTP</span> 
+                    <span> 다른 금융사에 등록해도 사용 가능한 일회용 비밀번호 생성기</span> 
+                  </div> 
+                  <div class="wd-detail-row indent"> 
+                    <span> [ 발급 수수료 ]<span class="wd-fee-tag">등급별 할인 적용</span><br> 
+                    <span>• 보안카드 : 최초 발급 무료/ 재발급 최대 1천원</span><br> 
+                    <span>• OTP 발급 : 최초 발급 및 재발급 최대 8천원</span> 
+                  </span></div> 
+                  <button type="button" class="wd-star-notice-btn" id="certDocBtn" onclick="const content = document.getElementById('certDocContent'); content.style.display = content.style.display === 'none' ? 'block' : 'none';"> 
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFA000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> 
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon> 
+                    </svg> 
+                    영업점 방문시 <strong>Click!</strong> 
+                  </button> 
+                  <div class="wd-star-notice" id="certDocContent" style="display: none; padding: 12px; background-color: #fafafa; border: 1px solid #eee; border-radius: 6px; font-size: 14px; margin-top: 10px;"> 
+                    <span> 
+                      영업점 방문시 구비 서류는 <strong>고객확인제도 재등록</strong>의 구비 서류와 동일해요.<br> 
+                      <a href="https://m.nhsec.com/static/notice/cpl/ntc01.html" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;"> 
+                        구비서류 확인하기 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 
+                      </a> 
+                      <a href="https://m.mynamuh.com/etc/branchList" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;"> 
+                        영업점 위치 확인하기 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 
+                      </a> 
+                    </span> 
+                  </div> 
+                </div> 
+              </div> 
+            </li> 
 
-            <li class="wd-card">
-              <div class="wd-card-header">
-                <div class="wd-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                </div>
-                <div class="wd-header-text">
-                  <div class="wd-method-label">방법 03</div>
-                  <div class="wd-method-title">보안카드 또는 실물OTP 발급 (영업점 방문)</div>
-                </div>
-              </div>
-              <div class="wd-card-body">
-                <div class="wd-notice">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                  <span>NH투자증권 영업점 방문 시 자녀명의 보안카드 또는 실물OTP를 발급받을 수 있어요. <strong>(중복사용 불가)</strong></span>
-                </div>
-                <div class="wd-detail-box">
-                  <div class="wd-detail-row">
-                    <span class="label">① 보안카드</span>
-                    <span>NH투자증권에서만 사용 가능한 숫자카드</span>
-                  </div>
-                  <div class="wd-detail-row" style="margin-top:6px;">
-                    <span class="label">② 실물OTP</span>
-                    <span>다른 금융사에 등록해도 사용 가능한 일회용 비밀번호 생성기</span>
-                  </div>
-                  <div class="wd-detail-row indent">
-                    <span> [ 발급 수수료 ]<span class="wd-fee-tag">등급별 할인 적용</span><br>
-                    <span>• 보안카드 : 최초 발급 무료/ 재발급 최대 1천원</span><br>
-                    <span>• OTP 발급 : 최초 발급 및 재발급 최대 8천원</span>
-                  </span></div>
-                  <button type="button" class="wd-star-notice-btn" id="certDocBtn" onclick="const content = document.getElementById('certDocContent'); content.style.display = content.style.display === 'none' ? 'block' : 'none';">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFA000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                    영업점 방문시 <strong>Click!</strong>
-                  </button>
-                  <div class="wd-star-notice" id="certDocContent" style="display: none; padding: 12px; background-color: #fafafa; border: 1px solid #eee; border-radius: 6px; font-size: 14px; margin-top: 10px;">
-                    <span>
-                      영업점 방문시 구비 서류는 <strong>고객확인제도 재등록</strong>의 구비 서류와 동일해요.<br>
-                      <a href="https://m.nhsec.com/static/notice/cpl/ntc01.html" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;">
-                        방문시 구비서류 확인하기
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                      </a>
-                      <a href="https://m.nhqv.com/etc/branchList" target="_blank" class="text-link" style="margin-top:6px;display:inline-flex;">
-                        영업점 위치 확인
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="wd-card">
-              <div class="wd-card-header">
-                <div class="wd-icon-wrap">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5E84A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.39 19a19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.9-8.39A2 2 0 0 1 3.47 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"></path></svg>
-                </div>
+            <!-- 방법 04 -->
+            <li class="wd-card" id="wd4">
+              <div class="wd-card-header" onclick="toggleWd('wd4')">
                 <div class="wd-header-text">
                   <div class="wd-method-label">방법 04</div>
-                  <div class="wd-method-title">자녀 계좌에 대체약정 서비스 신청 후 부모님 NH투자증권 계좌로 전화 이체</div>
+                  <div class="wd-method-title">아이 계좌에 부모님 계좌 대체약정 서비스 등록 후 직원을 통한 유선 출금</div>
                 </div>
+                <div class="wd-toggle-btn">👆 눌러보기</div>
               </div>
               <div class="wd-card-body">
-                <div class="wd-notice">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                  <span>부모님과 자녀 계좌를 동시에 개설한 경우, <strong>자동으로 자녀 계좌에 부모님 계좌가 대체약정</strong>되어 있어요.</span>
-                </div>
                 <div class="wd-notice" style="flex-direction: column; gap: 10px;">
                   <div style="display: flex; align-items: flex-start; gap: 8px;">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                    <span>자녀 계좌에 부모님 계좌가 대체약정 등록되어 있지 않은 경우, <strong>대체약정 서비스 신청</strong>이 필요해요.</span>
+                    <span>나무증권 앱에서 부모님과 아이 계좌를 동시에 개설한 경우, <strong>부모님 계좌로 출금 가능하도록 자동 연결</strong>되어 있어요.<br>
+                    연결되지 않은 경우, <strong>대체약정 서비스 신청</strong>이 필요해요.</span>
                   </div>
                   <a href="https://link.mynamuh.com/rft7tu" target="_blank" class="wd-link-btn">
                     대체약정 서비스 신청 바로가기
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                   </a>
                 </div>
-                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
-                  <div class="wd-info-cell" style="width: 100%; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
-                    <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">유선 출금 요청</div>
-                    <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
-                      <a href="tel:1544-0000" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">📞 1544-0000</a>
+                <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+                  <p class="wd-wire-notice">⚠️ 아이 계좌로 별도 로그인했더라도 아이의 보안매체(보안카드 또는 OTP)가 없는 경우, 고객지원센터를 통해 직원과 통화 후 출금 신청을 해야해요.</p>
+                  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div class="wd-info-cell" style="flex: 1; min-width: 130px; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
+                      <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">유선 출금 요청</div>
+                      <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
+                        <a href="tel:1544-0000" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">📞 1544-0000</a>
+                      </div>
+                      <div style="font-size: 11px; color: #888; margin-top: 3px;">고객지원센터</div>
                     </div>
-                    <div style="font-size: 11px; color: #888; margin-top: 3px;">고객지원센터</div>
-                  </div>
-                  <div class="wd-info-cell" style="width: 100%; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
-                    <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">출금 가능 시간</div>
-                    <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                      <span style="display: inline-block; vertical-align: middle;">08:00 ~ 16:00</span>
+                    <div class="wd-info-cell" style="flex: 1; min-width: 130px; background-color: #F4F6F4; border: 1px solid #E2E8E2; border-radius: 12px; padding: 10px 14px; box-sizing: border-box;">
+                      <div class="wd-info-cell-label" style="font-size: 11px; color: #666; margin-bottom: 4px;">출금 가능 시간</div>
+                      <div class="wd-info-cell-value" style="font-size: 15px; font-weight: bold; color: #1A2B1A;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span style="display: inline-block; vertical-align: middle;">08:00 ~ 16:00</span>
+                      </div>
+                      <div style="font-size: 11px; color: #888; margin-top: 3px;">영업일</div>
                     </div>
-                    <div style="font-size: 11px; color: #888; margin-top: 3px;">영업일</div>
                   </div>
                 </div>
               </div>
             </li>
 
           </ul>
-        </div>
-      </div>
-    </div>
 
-  </main>
+          <div class="bottom-info-grid"> 
+            <div class="bottom-info-box"> 
+              <div class="bottom-info-box-title">🏢 영업점 방문이 필요한 경우</div> 
+              <div class="bottom-info-box-desc"> 
+                <strong>NH투자증권 영업점으로 방문해 주세요.</strong><br> 
+                <span class="orange">🚫 농협은행으로 가시면 안돼요.</span> 
+              </div> 
+              <div class="bottom-info-box-desc"><strong>업무시간</strong> : 08:00 ~ 16:00</div> 
+              <a href="https://m.mynamuh.com/etc/branchList" target="_blank" class="bottom-link"> 
+                📍 영업점 위치 확인하기 
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 
+              </a> 
+            </div> 
+            <div class="bottom-info-box"> 
+              <div class="bottom-info-box-title">📋 고객확인제도 재등록이 필요한 경우</div> 
+              <a href="https://m.nhsec.com/static/notice/cpl/ntc01.html" target="_blank" class="bottom-link"> 
+                구비서류 확인하기 
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 
+              </a> 
+            </div> 
+          </div> 
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-copy">
-        나무증권 | NH투자증권 1544-0000<br>
-        투자전 설명청취 및 상품설명서 약관 필독, 원금손실가능 및 투자자귀속, 이 금융상품(주식)은 예금자보호법에 따라 보호되지 않습니다.<br>
-        이 예탁금 중 증권매수 미사용 현금 잔액은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 "1억원까지"(본 금융회사의 여타 보호상품과 합산) 보호됩니다.
-      </div>
-    </div>
-  </footer>
+        </div> 
+      </div> 
+    </div> 
 
-  <script>
-    function toggle(id) {
+  </main> 
+
+  <footer class="footer"> 
+    <div class="footer-inner"> 
+      <div class="footer-copy"> 
+        나무증권 | NH투자증권 1544-0000<br> 
+       • 투자전 설명청취 및 상품설명서 약관 필독, 원금손실가능 및 투자자귀속, 이 금융상품(주식)은 예금자보호법에 따라 보호되지 않습니다.<br> 
+       • 이 예탁금 중 증권매수 미사용 현금 잔액은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 "1억원까지"(본 금융회사의 여타 보호상품과 합산) 보호됩니다. 
+      </div> 
+    </div> 
+  </footer> 
+
+  <script> 
+    function toggle(id) { 
+      var card = document.getElementById(id); 
+      var body = document.getElementById('body-' + id); 
+      var isOpen = body.classList.contains('open'); 
+      body.classList.toggle('open', !isOpen); 
+      card.classList.toggle('active', !isOpen); 
+      updateProgress(id, !isOpen); 
+    } 
+
+    function toggleWd(id) {
       var card = document.getElementById(id);
-      var body = document.getElementById('body-' + id);
-      var isOpen = body.classList.contains('open');
-      body.classList.toggle('open', !isOpen);
-      card.classList.toggle('active', !isOpen);
-      updateProgress(id, !isOpen);
+      var isOpen = card.classList.contains('wd-open');
+      card.classList.toggle('wd-open', !isOpen);
     }
 
-    function scrollToStep(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      var offset = 130;
-      var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-      setTimeout(function() {
-        var body = document.getElementById('body-' + id);
-        if (!body.classList.contains('open')) toggle(id);
-      }, 400);
-    }
+    function scrollToStep(id) { 
+      var el = document.getElementById(id); 
+      if (!el) return; 
+      var offset = 130; 
+      var top = el.getBoundingClientRect().top + window.pageYOffset - offset; 
+      window.scrollTo({ top: top, behavior: 'smooth' }); 
+      setTimeout(function() { 
+        var body = document.getElementById('body-' + id); 
+        if (!body.classList.contains('open')) toggle(id); 
+      }, 400); 
+    } 
 
-    function updateProgress(activeId, isOpen) {
-      var steps = ['step1','step2','step3'];
-      var activeIdx = steps.indexOf(activeId);
-      var pSteps = document.querySelectorAll('.p-step');
-      pSteps.forEach(function(ps, i) {
-        ps.classList.remove('active','done');
-        if (i < activeIdx) ps.classList.add('done');
-        if (i === activeIdx && isOpen) ps.classList.add('active');
-      });
-    }
-  </script>
+    function updateProgress(activeId, isOpen) { 
+      var steps = ['step1','step2','step3']; 
+      var activeIdx = steps.indexOf(activeId); 
+      var pSteps = document.querySelectorAll('.p-step'); 
+      pSteps.forEach(function(ps, i) { 
+        ps.classList.remove('active','done'); 
+        if (i < activeIdx) ps.classList.add('done'); 
+        if (i === activeIdx && isOpen) ps.classList.add('active'); 
+      }); 
+    } 
+  </script> 
 
-</body>
+</body> 
 </html>
